@@ -1,2 +1,87 @@
-# xiaolanjxiaoyuan
-no
+# 小蓝鲸 · 随地大小签（自用重构版）
+
+基于 [aquamarine5/ChaoxingSignFaker](https://github.com/aquamarine5/ChaoxingSignFaker)（AGPL-3.0）二次改造的个人自用版本。
+
+> 本仓库只放自己的构建产物与更新说明，不对外分发，不承接任何商业用途。
+
+---
+
+## 下载
+
+最新版见 [Releases](https://github.com/inpoortt-net/xiaolanjxiaoyuan/releases/latest)。
+
+- 架构：**arm64-v8a**（真机可用，x86 模拟器装不了）
+- 包名：`com.xiaolanjing.campus`
+- 签名：自签（不是原作者官方签名，装机会和官方版冲突，两个只能留一个）
+
+---
+
+## 改了什么
+
+原版是「代签工具」。这个版本保留全部签到能力，重做了外观和几个高频模块。
+
+### 界面重做
+- 从 Material 3 默认样式换成自绘体系：画布 `#F5F6F8` + 纯白卡片 + 大圆角 + 零阴影
+- 底部导航改成「浮岛」胶囊，悬浮在内容之上
+- 统一色板：accent `#2F5BEA`，Mint / Amber / Coral 语义色
+- 所有页面按「标题 — 副标题 — 卡片」三段重排
+
+### 课表
+- 从教务系统（广州南方学院 `jwxt.nfu.edu.cn`）抓真实课表
+- **自动定位今天真正在第几周**：内置 2026-2027 学年校历，不再显示错周
+- 时间轴显示「节数 + 完整时间段」（`1` / `08:00-08:40`），作息按学院官方 PDF 校对
+- 首页「今天 N 门」按真实周次算
+
+### 今日排班
+- 选好要代签的人，生成一条签名链接发到群里，谁点开就勾谁去签
+- 链接带 HMAC-SHA256 签名 + 过期时间，改一个字符就校验失败
+- 落地页勾选名单后一键导入「代签用户」
+
+### 签到位置
+- 「收藏的签到位置」支持百度地图选点
+- 需要自己申请百度地图开放平台 AK（Android 类型 + 包名 + 签名 SHA1 三件套）
+
+---
+
+## 更新机制
+
+App 里「设置 → 检查更新」，以及启动时自动静默检查，读的都是本仓库的 Release：
+
+```
+https://api.github.com/repos/inpoortt-net/xiaolanjxiaoyuan/releases/latest
+```
+
+有新版会弹窗显示版本号和更新日志，点「去下载」跳到对应 Release 页。
+
+更新日志里写 `[force]` 或 `【强制更新】` → 变成不能跳过的强制更新。
+
+---
+
+## 构建
+
+需要 **JDK 21** + **Android SDK Platform 37** + **build-tools**。
+
+```bash
+./gradlew :app:assembleRelease
+```
+
+签名用本地自签 keystore（`app/build.gradle` 的 `signingConfigs`），不走官方签名。
+
+---
+
+## 版本记录
+
+### 1.19.4 (2026-10-28)
+- 界面全面重做：浮岛导航、卡片体系、统一色板
+- 课表接入教务系统，显示真实上课时间与真实周次
+- 今日排班链接分享 + 勾选导入
+- 地图选点问题修复
+- 新增从本仓库自动检查更新
+
+---
+
+## 来源与许可
+
+原项目 [aquamarine5/ChaoxingSignFaker](https://github.com/aquamarine5/ChaoxingSignFaker)，AGPL-3.0。
+
+原作者声明不欢迎换皮改名二次分发与商业化，本仓库是个人自用，遵守同样约束。
