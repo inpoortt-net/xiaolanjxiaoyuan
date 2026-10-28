@@ -8,7 +8,9 @@
 
 ## 下载
 
-最新版见 [Releases](https://github.com/inpoortt-net/xiaolanjxiaoyuan/releases/latest)。
+当前版本：**1.19.7**（2026-10-28）
+
+最新版见 [Releases](https://github.com/inpoortt-net/xiaolanjxiaoyuan/releases/latest)，页面里挑 `xiaolanjing-<版本>-arm64.apk` 那个附件。
 
 - 架构：**arm64-v8a**（真机可用，x86 模拟器装不了）
 - 包名：`com.xiaolanjing.campus`
@@ -51,9 +53,13 @@ App 里「设置 → 检查更新」，以及启动时自动静默检查，读�
 https://api.github.com/repos/inpoortt-net/xiaolanjxiaoyuan/releases/latest
 ```
 
-有新版会弹窗显示版本号和更新日志，点「去下载」跳到对应 Release 页。
+有新版会弹窗显示版本号和更新日志，点「去下载」跳到 APK 直链。
 
-更新日志里写 `[force]` 或 `【强制更新】` → 变成不能跳过的强制更新。
+比较的是真正的版本号：本地和远端一致时不会弹窗、也不会给设置 tab 挂红点。
+
+更新日志里写 `[force]` 或 `【强制更新】` → 变成不能跳过的强制更新（弹窗不显示「以后再说」）。
+
+日志里的 Markdown 标记（`##`、`-`、`**`）在客户端会自动清洗成纯文本。
 
 ---
 
@@ -70,6 +76,16 @@ https://api.github.com/repos/inpoortt-net/xiaolanjxiaoyuan/releases/latest
 ---
 
 ## 版本记录
+
+### 1.19.7 (2026-10-28)
+- 修掉已是最新时仍冒红点、手动检查还弹更新窗的问题
+- 判断改成真比版本号
+
+### 1.19.6 (2026-10-28)
+- 更新日志的 Markdown 标记自动清洗
+
+### 1.19.5 (2026-10-28)
+- 第一个走通自动更新链路的版本（检查 → 弹窗 → 下载）
 
 ### 1.19.4 (2026-10-28)
 - 界面全面重做：浮岛导航、卡片体系、统一色板
